@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_icons/flutter_icons.dart';
 import 'package:petsupplies/common_dimens.dart';
 import 'package:petsupplies/favourite_list.dart';
 
@@ -11,7 +10,7 @@ class FavouriteProductListing extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.symmetric(
             horizontal: CommonDimens.leftRightPadding,
-            vertical: CommonDimens.leftRightPadding / 2,
+            vertical: CommonDimens.leftRightPadding / 4,
           ),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -21,7 +20,7 @@ class FavouriteProductListing extends StatelessWidget {
                 style: Theme.of(context).textTheme.headline6,
               ),
               Text(
-                "Desk Lamp",
+                "Pet Items",
                 style: Theme.of(context).textTheme.headline6.copyWith(
                       fontWeight: FontWeight.w300,
                     ),

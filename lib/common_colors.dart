@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class CommonColors {
+  static Color headlineTextColor = Colors.black;
   static Color accentColor = Colors.orange;
   static Color primaryColorDark = Colors.deepOrangeAccent;
 

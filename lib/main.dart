@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:petsupplies/common_colors.dart';
+import 'package:petsupplies/core/routes.dart';
 import 'package:petsupplies/home_page.dart';
+
+import 'core/constants.dart';
 
 void main() {
   runApp(MyApp());
@@ -13,6 +16,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
+      onGenerateRoute: RouteGenerator.generateRoute,
+      initialRoute: MyHomePage.routeName,
       theme: ThemeData(
         // This is the theme of your application.
         //
@@ -35,6 +40,7 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
+  static const String routeName = "${appName}_${versionName}_${homePage}_home";
   MyHomePage({Key key, this.title}) : super(key: key);
 
   // This widget is the home page of your application. It is stateful, meaning
