@@ -16,7 +16,22 @@ class CartIcon extends StatelessWidget {
             FlutterIcons.shopping_bag_fea,
             color: CommonColors.accentColor,
           ),
-          onPressed: () {},
+          onPressed: () {
+            showModalBottomSheet(
+                backgroundColor: Colors.transparent,
+                context: context,
+                builder: (_) {
+                  return Container(
+                    decoration: BoxDecoration(
+                      color: CommonColors.accentColor,
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(20),
+                        topRight: Radius.circular(20),
+                      ),
+                    ),
+                  );
+                });
+          },
         ),
         if (cartState.cart.isNotEmpty)
           Positioned(
