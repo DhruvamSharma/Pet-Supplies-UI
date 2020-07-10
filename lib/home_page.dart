@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
+import 'package:petsupplies/cart_icon.dart';
 import 'package:petsupplies/common_colors.dart';
 import 'package:petsupplies/common_dimens.dart';
 import 'package:petsupplies/favourite_listing.dart';
@@ -32,48 +33,56 @@ class HomePage extends StatelessWidget {
       child: Builder(
         builder: (providerContext) {
           return Scaffold(
-            body: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+            body: Stack(
               children: [
+                Positioned(
+                  bottom: -80,
+                  right: -50,
+                  child: Image.network(
+                    "https://storage.needpix.com/rsynced_images/silhouette-3263081_1280.png",
+                    height: 300,
+                    width: 300,
+                    color: CommonColors.accentColor.withOpacity(0.2),
+                    fit: BoxFit.fill,
+                  ),
+                ),
                 Container(
                   height: MediaQuery.of(context).padding.top,
                   width: MediaQuery.of(context).size.width,
                   color: CommonColors.primaryColorDark,
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(
-                    top: CommonDimens.statusBarTopPadding,
-                    left: CommonDimens.leftRightPadding,
-                    right: CommonDimens.leftRightPadding,
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      IconButton(
-                        icon: Icon(
-                          Icons.widgets,
-                          color: CommonColors.accentColor,
-                        ),
-                        onPressed: () {
-                          if (controller.isCompleted) {
-                            controller.reverse();
-                          } else {
-                            controller.forward();
-                          }
-                        },
+                ListView(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(
+                        top: CommonDimens.statusBarTopPadding,
+                        left: CommonDimens.leftRightPadding,
+                        right: CommonDimens.leftRightPadding,
                       ),
-                      IconButton(
-                        icon: Icon(
-                          FlutterIcons.shopping_bag_fea,
-                          color: CommonColors.accentColor,
-                        ),
-                        onPressed: () {},
-                      )
-                    ],
-                  ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          IconButton(
+                            icon: Icon(
+                              Icons.widgets,
+                              color: CommonColors.accentColor,
+                            ),
+                            onPressed: () {
+                              if (controller.isCompleted) {
+                                controller.reverse();
+                              } else {
+                                controller.forward();
+                              }
+                            },
+                          ),
+                          CartIcon(),
+                        ],
+                      ),
+                    ),
+                    SupplyList(),
+                    FavouriteProductListing(),
+                  ],
                 ),
-                SupplyList(),
-                FavouriteProductListing(),
               ],
             ),
             // This trailing comma makes auto-formatting nicer for build methods.

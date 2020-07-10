@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_icons/flutter_icons.dart';
 import 'package:petsupplies/common_colors.dart';
 import 'package:petsupplies/common_dimens.dart';
 import 'package:provider/provider.dart';
@@ -51,6 +52,10 @@ class SupplyList extends StatelessWidget {
                               index
                           ? 40
                           : 30,
+                  child: Icon(
+                    FlutterIcons.ac_unit_mdi,
+                    color: CommonColors.iconColor,
+                  ),
                 ),
               ),
             ),

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:petsupplies/common_colors.dart';
 import 'package:petsupplies/core/routes.dart';
+import 'package:petsupplies/favourite_list.dart';
 import 'package:petsupplies/home_page.dart';
+import 'package:provider/provider.dart';
 
 import 'core/constants.dart';
 
@@ -13,28 +15,36 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      debugShowCheckedModeBanner: false,
-      onGenerateRoute: RouteGenerator.generateRoute,
-      initialRoute: MyHomePage.routeName,
-      theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
-        primarySwatch: Colors.orange,
-        // This makes the visual density adapt to the platform that you run
-        // the app on. For desktop platforms, the controls will be smaller and
-        // closer together (more dense) than on mobile platforms.
-        visualDensity: VisualDensity.adaptivePlatformDensity,
+    return ChangeNotifierProvider<CartModel>(
+      create: (_) => CartModel(),
+      child: MaterialApp(
+        title: 'Flutter Demo',
+        debugShowCheckedModeBanner: false,
+        onGenerateRoute: RouteGenerator.generateRoute,
+        initialRoute: MyHomePage.routeName,
+        theme: ThemeData(
+          // This is the theme of your application.
+          //
+          // Try running your application with "flutter run". You'll see the
+          // application has a blue toolbar. Then, without quitting the app, try
+          // changing the primarySwatch below to Colors.green and then invoke
+          // "hot reload" (press "r" in the console where you ran "flutter run",
+          // or simply save your changes to "hot reload" in a Flutter IDE).
+          // Notice that the counter didn't reset back to zero; the application
+          // is not restarted.
+          primarySwatch: Colors.orange,
+          scaffoldBackgroundColor: CommonColors.cardColor,
+          // This makes the visual density adapt to the platform that you run
+          // the app on. For desktop platforms, the controls will be smaller and
+          // closer together (more dense) than on mobile platforms.
+          visualDensity: VisualDensity.adaptivePlatformDensity,
+          appBarTheme: AppBarTheme(
+            brightness: Brightness.dark,
+            color: CommonColors.cardColor,
+          ),
+        ),
+        home: MyHomePage(title: 'Flutter Demo Home Page'),
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
 }
@@ -84,10 +94,19 @@ class _MyHomePageState extends State<MyHomePage>
         Container(
           height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width,
-          color: CommonColors.primaryColorDark,
+          color: CommonColors.cardColor,
         ),
         HomePage(controller),
       ],
     );
+  }
+}
+
+class CartModel extends ChangeNotifier {
+  final List<SupplyItemModel> cart = List();
+
+  void addItemToCart(SupplyItemModel item) {
+    cart.add(item);
+    notifyListeners();
   }
 }

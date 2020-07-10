@@ -60,12 +60,18 @@ class SupplyItemDetailRoute extends StatelessWidget {
                             color: CommonColors.headlineTextColor,
                           ),
                     ),
-                    Text(
-                      "\$ ${itemModel.itemPrice}",
-                      style: Theme.of(context).textTheme.subtitle1.copyWith(
-                            fontWeight: FontWeight.w500,
-                            color: CommonColors.headlineTextColor,
-                          ),
+                    Container(
+                      padding: const EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                          color: CommonColors.accentColor.withOpacity(0.5),
+                          borderRadius: BorderRadius.all(Radius.circular(20))),
+                      child: Text(
+                        "\$ ${itemModel.itemPrice}",
+                        style: Theme.of(context).textTheme.subtitle1.copyWith(
+                              fontWeight: FontWeight.w500,
+                              color: CommonColors.headlineTextColor,
+                            ),
+                      ),
                     )
                   ],
                 ),
