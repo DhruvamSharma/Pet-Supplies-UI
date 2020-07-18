@@ -5,7 +5,9 @@ class CommonColors {
   static Color accentColor = Colors.orange;
   static Color primaryColorDark = Colors.deepOrangeAccent;
   static Color iconColor = Colors.white;
+  static Color bottomSheetColor = Colors.white;
   static Color cardColor = _getColor(0xfffafafa);
+  static Color progressBarBackgroundColor = _getColor(0xffe0e0e0);
 
   static Map<int, Color> _color = {
     50: Color.fromRGBO(136, 14, 79, .1),

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_icons/flutter_icons.dart';
 import 'package:petsupplies/cart_icon.dart';
 import 'package:petsupplies/common_colors.dart';
 import 'package:petsupplies/common_dimens.dart';
@@ -49,9 +48,14 @@ class HomePage extends StatelessWidget {
                 Container(
                   height: MediaQuery.of(context).padding.top,
                   width: MediaQuery.of(context).size.width,
-                  color: CommonColors.primaryColorDark,
+                  decoration: BoxDecoration(
+                      color: Colors.black,
+                      borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(5),
+                          topRight: Radius.circular(5))),
                 ),
                 ListView(
+                  physics: BouncingScrollPhysics(),
                   children: [
                     Padding(
                       padding: const EdgeInsets.only(
@@ -80,7 +84,12 @@ class HomePage extends StatelessWidget {
                       ),
                     ),
                     SupplyList(),
-                    FavouriteProductListing(),
+                    if (Provider.of<SupplyProviderModel>(providerContext)
+                            .selectedIndex ==
+                        0)
+                      FavouriteProductListing(key: ObjectKey("abdullah"))
+                    else
+                      FavouriteProductListing(key: ObjectKey("abdullahaa")),
                   ],
                 ),
               ],

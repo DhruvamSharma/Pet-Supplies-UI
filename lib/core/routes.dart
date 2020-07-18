@@ -1,17 +1,25 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:petsupplies/main.dart';
+import 'package:petsupplies/splash_screen.dart';
 import 'package:petsupplies/supply_item_detail.dart';
-import 'package:petsupplies/favourite_list.dart';
+import 'package:provider/provider.dart';
 
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
+      case SplashScreenRoute.routeName:
+        return _transitionRoute(
+            ChangeNotifierProvider<SplashProgressNotifier>(
+              create: (_) => SplashProgressNotifier(),
+              child: SplashScreenRoute(),
+            ),
+            settings);
       case MyHomePage.routeName:
         return _transitionRoute(MyHomePage(), settings);
       case SupplyItemDetailRoute.routeName:
-        final SupplyItemModel model = settings.arguments;
-        return _transitionRoute(SupplyItemDetailRoute(model), settings);
+        final int index = settings.arguments;
+        return _transitionRoute(SupplyItemDetailRoute(index), settings);
       default:
         return _errorRoute();
     }

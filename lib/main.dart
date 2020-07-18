@@ -3,6 +3,7 @@ import 'package:petsupplies/common_colors.dart';
 import 'package:petsupplies/core/routes.dart';
 import 'package:petsupplies/favourite_list.dart';
 import 'package:petsupplies/home_page.dart';
+import 'package:petsupplies/splash_screen.dart';
 import 'package:provider/provider.dart';
 
 import 'core/constants.dart';
@@ -21,7 +22,7 @@ class MyApp extends StatelessWidget {
         title: 'Flutter Demo',
         debugShowCheckedModeBanner: false,
         onGenerateRoute: RouteGenerator.generateRoute,
-        initialRoute: MyHomePage.routeName,
+        initialRoute: SplashScreenRoute.routeName,
         theme: ThemeData(
           // This is the theme of your application.
           //
@@ -94,7 +95,7 @@ class _MyHomePageState extends State<MyHomePage>
         Container(
           height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width,
-          color: CommonColors.cardColor,
+          color: CommonColors.accentColor,
         ),
         HomePage(controller),
       ],

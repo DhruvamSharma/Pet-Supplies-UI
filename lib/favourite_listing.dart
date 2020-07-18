@@ -3,6 +3,9 @@ import 'package:petsupplies/common_dimens.dart';
 import 'package:petsupplies/favourite_list.dart';
 
 class FavouriteProductListing extends StatelessWidget {
+  final key;
+  FavouriteProductListing({this.key});
+
   @override
   Widget build(BuildContext context) {
     return Column(
