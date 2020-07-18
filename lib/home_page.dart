@@ -34,17 +34,6 @@ class HomePage extends StatelessWidget {
           return Scaffold(
             body: Stack(
               children: [
-                Positioned(
-                  bottom: -80,
-                  right: -50,
-                  child: Image.network(
-                    "https://storage.needpix.com/rsynced_images/silhouette-3263081_1280.png",
-                    height: 300,
-                    width: 300,
-                    color: CommonColors.accentColor.withOpacity(0.2),
-                    fit: BoxFit.fill,
-                  ),
-                ),
                 Container(
                   height: MediaQuery.of(context).padding.top,
                   width: MediaQuery.of(context).size.width,

@@ -79,7 +79,7 @@ class SupplyList extends StatelessWidget {
     );
   }
 
-  List<IconData> iconList = [
+  final List<IconData> iconList = [
     FlutterIcons.bone_mco,
     FlutterIcons.paw_mco,
     FlutterIcons.ribbon_mco,

@@ -69,12 +69,16 @@ class CartIcon extends StatelessWidget {
           padding: const EdgeInsets.only(top: CommonDimens.leftRightPadding),
           child: Text(
             "Uh oh!",
-            style: Theme.of(context).textTheme.headline6.copyWith(),
+            style: Theme.of(context).textTheme.headline6.copyWith(
+                  color: CommonColors.headlineTextColor,
+                ),
           ),
         ),
         Text(
           "Uh oh! Your cart seems empty",
-          style: Theme.of(context).textTheme.headline6.copyWith(),
+          style: Theme.of(context).textTheme.headline6.copyWith(
+                color: CommonColors.headlineTextColor,
+              ),
         ),
         Lottie.network(
           "https://assets8.lottiefiles.com/packages/lf20_C31OHO.json",
