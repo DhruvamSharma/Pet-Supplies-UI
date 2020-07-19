@@ -110,8 +110,9 @@ class FavouriteListWidget extends StatelessWidget {
                                     radius: 16,
                                     child: Icon(
                                       FlutterIcons.add_mdi,
-                                      color: CommonColors.accentColor,
+                                      color: CommonColors.iconColor,
                                     ),
+                                    backgroundColor: CommonColors.accentColor,
                                   ),
                                 ),
                               ),

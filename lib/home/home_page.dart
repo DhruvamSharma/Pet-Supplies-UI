@@ -34,15 +34,6 @@ class HomePage extends StatelessWidget {
           return Scaffold(
             body: Stack(
               children: [
-                Container(
-                  height: MediaQuery.of(context).padding.top,
-                  width: MediaQuery.of(context).size.width,
-                  decoration: BoxDecoration(
-                      color: Colors.black,
-                      borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(5),
-                          topRight: Radius.circular(5))),
-                ),
                 ListView(
                   physics: BouncingScrollPhysics(),
                   children: [

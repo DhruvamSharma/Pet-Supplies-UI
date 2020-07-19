@@ -90,18 +90,26 @@ class _MyHomePageState extends State<MyHomePage>
                 Material(
                   color: Colors.transparent,
                   child: Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding: const EdgeInsets.only(
+                      left: 20.0,
+                      top: 20.0,
+                      bottom: 20.0,
+                    ),
                     child: Row(
                       children: [
                         Icon(
                           iconList[i],
-                          size: 38,
+                          size: 30,
+                          color: CommonColors.iconColor,
                         ),
                         Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Text(
                             titleList[i],
-                            style: Theme.of(context).textTheme.headline5,
+                            style:
+                                Theme.of(context).textTheme.headline6.copyWith(
+                                      color: CommonColors.iconColor,
+                                    ),
                           ),
                         )
                       ],
@@ -157,7 +165,7 @@ class ThemeModel extends ChangeNotifier {
   ThemeData appTheme;
 
   ThemeModel() {
-    appTheme = darkTheme;
+    appTheme = lightTheme;
   }
 
   void toggleTheme() {

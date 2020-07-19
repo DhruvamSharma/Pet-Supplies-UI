@@ -25,15 +25,6 @@ class _SplashScreenRouteState extends State<SplashScreenRoute> {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Container(
-                height: MediaQuery.of(context).padding.top,
-                width: MediaQuery.of(context).size.width,
-                decoration: BoxDecoration(
-                    color: Colors.black,
-                    borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(5),
-                        topRight: Radius.circular(5))),
-              ),
               Spacer(),
               Align(
                 alignment: Alignment.center,
