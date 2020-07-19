@@ -1,16 +1,18 @@
-# petsupplies
+# Pet Supplies ⭐ 👋
 
-A new Flutter application.
+A demo application for beatiful Pet Shop UI
 
-## Getting Started
+⭐ Star the Repository to show love and 🍴fork the repository for building upon this.
 
-This project is a starting point for a Flutter application.
+<img src = "https://github.com/DhruvamSharma/Pet-Supplies/blob/master/assets/Screenshot%202020-07-19%20at%207.41.47%20PM%20(2).png">
+<img src = "https://github.com/DhruvamSharma/Pet-Supplies/blob/master/assets/Screenshot%202020-07-19%20at%207.42.10%20PM%20(2).png">
+<img src = "https://github.com/DhruvamSharma/Pet-Supplies/blob/master/assets/Screenshot%202020-07-19%20at%207.42.24%20PM%20(2).png">
+<img src = "https://github.com/DhruvamSharma/Pet-Supplies/blob/master/assets/Screenshot%202020-07-19%20at%207.41.53%20PM%20(2).png">
+<img src = "https://github.com/DhruvamSharma/Pet-Supplies/blob/master/assets/Screenshot%202020-07-19%20at%207.41.58%20PM%20(2).png">
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Packages Used
+1. [Provider](https://pub.dev/packages/provider) (^4.1.3)
+2. [Flutter Icons](https://pub.dev/packages/flutter_icons) (^1.1.0)
+3. [Lottie](https://pub.dev/packages/lottie) (^0.4.1)
+4. [Intl](https://pub.dev/packages/intl) (^0.16.1)
+5. [Simple Animations](https://pub.dev/packages/simple_animations) (^1.3.11)
