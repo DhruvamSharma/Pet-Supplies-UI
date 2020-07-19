@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:petsupplies/common_colors.dart';
-import 'package:petsupplies/common_dimens.dart';
-import 'package:petsupplies/favourite_list.dart';
+import 'package:petsupplies/core/common_colors.dart';
+import 'package:petsupplies/core/common_dimens.dart';
+import 'package:petsupplies/home/favourite_list.dart';
 
 class FavouriteProductListing extends StatelessWidget {
   final key;

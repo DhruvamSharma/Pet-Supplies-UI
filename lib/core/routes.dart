@@ -1,8 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:petsupplies/main.dart';
-import 'package:petsupplies/splash_screen.dart';
-import 'package:petsupplies/supply_item_detail.dart';
+import 'package:petsupplies/payment/payment.dart';
+import 'package:petsupplies/splash/splash_screen.dart';
+import 'package:petsupplies/view_detail/supply_item_detail.dart';
 import 'package:provider/provider.dart';
 
 class RouteGenerator {
@@ -20,6 +21,8 @@ class RouteGenerator {
       case SupplyItemDetailRoute.routeName:
         final int index = settings.arguments;
         return _transitionRoute(SupplyItemDetailRoute(index), settings);
+      case PaymentRoute.routeName:
+        return _transitionRoute(PaymentRoute(), settings);
       default:
         return _errorRoute();
     }

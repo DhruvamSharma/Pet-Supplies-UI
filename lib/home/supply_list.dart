@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
-import 'package:petsupplies/common_colors.dart';
-import 'package:petsupplies/common_dimens.dart';
+import 'package:petsupplies/core/common_colors.dart';
+import 'package:petsupplies/core/common_dimens.dart';
 import 'package:provider/provider.dart';
 
 import 'home_page.dart';

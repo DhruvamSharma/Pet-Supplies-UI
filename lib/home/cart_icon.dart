@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:lottie/lottie.dart';
-import 'package:petsupplies/common_dimens.dart';
+import 'package:petsupplies/core/common_dimens.dart';
 import 'package:petsupplies/main.dart';
 import 'package:provider/provider.dart';
 
-import 'common_colors.dart';
+import '../core/common_colors.dart';
 
 class CartIcon extends StatelessWidget {
   @override
@@ -20,14 +20,16 @@ class CartIcon extends StatelessWidget {
           ),
           onPressed: () {
             showModalBottomSheet(
-                backgroundColor: Colors.transparent,
                 context: context,
                 isScrollControlled: true,
                 builder: (_) {
                   return Container(
                     height: 500,
                     decoration: BoxDecoration(
-                      color: CommonColors.bottomSheetColor,
+                      color: Provider.of<ThemeModel>(context).appTheme ==
+                              ThemeData.light()
+                          ? CommonColors.bottomSheetColor
+                          : null,
                       borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(20),
                         topRight: Radius.circular(20),

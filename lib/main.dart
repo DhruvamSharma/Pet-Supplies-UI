@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:petsupplies/common_colors.dart';
+import 'package:flutter_icons/flutter_icons.dart';
+import 'package:petsupplies/core/common_colors.dart';
 import 'package:petsupplies/core/routes.dart';
-import 'package:petsupplies/favourite_list.dart';
-import 'package:petsupplies/home_page.dart';
-import 'package:petsupplies/splash_screen.dart';
+import 'package:petsupplies/home/favourite_list.dart';
+import 'package:petsupplies/home/home_page.dart';
+import 'package:petsupplies/splash/splash_screen.dart';
 import 'package:provider/provider.dart';
 
 import 'core/constants.dart';
@@ -16,35 +17,20 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider<CartModel>(
-      create: (_) => CartModel(),
-      child: MaterialApp(
-        title: 'Flutter Demo',
-        debugShowCheckedModeBanner: false,
-        onGenerateRoute: RouteGenerator.generateRoute,
-        initialRoute: SplashScreenRoute.routeName,
-        theme: ThemeData(
-          // This is the theme of your application.
-          //
-          // Try running your application with "flutter run". You'll see the
-          // application has a blue toolbar. Then, without quitting the app, try
-          // changing the primarySwatch below to Colors.green and then invoke
-          // "hot reload" (press "r" in the console where you ran "flutter run",
-          // or simply save your changes to "hot reload" in a Flutter IDE).
-          // Notice that the counter didn't reset back to zero; the application
-          // is not restarted.
-          primarySwatch: Colors.orange,
-          scaffoldBackgroundColor: CommonColors.cardColor,
-          // This makes the visual density adapt to the platform that you run
-          // the app on. For desktop platforms, the controls will be smaller and
-          // closer together (more dense) than on mobile platforms.
-          visualDensity: VisualDensity.adaptivePlatformDensity,
-          appBarTheme: AppBarTheme(
-            brightness: Brightness.dark,
-            color: CommonColors.cardColor,
+    return ChangeNotifierProvider<ThemeModel>(
+      create: (_) => ThemeModel(),
+      child: ChangeNotifierProvider<CartModel>(
+        create: (_) => CartModel(),
+        child: Builder(
+          builder: (providerContext) => MaterialApp(
+            title: 'Flutter Demo',
+            debugShowCheckedModeBanner: false,
+            onGenerateRoute: RouteGenerator.generateRoute,
+            initialRoute: SplashScreenRoute.routeName,
+            theme: Provider.of<ThemeModel>(providerContext).appTheme,
+            home: MyHomePage(title: 'Flutter Demo Home Page'),
           ),
         ),
-        home: MyHomePage(title: 'Flutter Demo Home Page'),
       ),
     );
   }
@@ -96,11 +82,53 @@ class _MyHomePageState extends State<MyHomePage>
           height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width,
           color: CommonColors.accentColor,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              for (int i = 0; i < iconList.length; i++)
+                Material(
+                  color: Colors.transparent,
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Row(
+                      children: [
+                        Icon(
+                          iconList[i],
+                          size: 38,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            titleList[i],
+                            style: Theme.of(context).textTheme.headline5,
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                )
+            ],
+          ),
         ),
         HomePage(controller),
       ],
     );
   }
+
+  final List<IconData> iconList = [
+    FlutterIcons.bone_mco,
+    FlutterIcons.paw_mco,
+    FlutterIcons.ribbon_mco,
+    FlutterIcons.food_apple_mco,
+  ];
+
+  final List<String> titleList = [
+    "Bones",
+    "Paw Grooming",
+    "Safety",
+    "Pet Food",
+  ];
 }
 
 class CartModel extends ChangeNotifier {
@@ -108,6 +136,36 @@ class CartModel extends ChangeNotifier {
 
   void addItemToCart(SupplyItemModel item) {
     cart.add(item);
+    notifyListeners();
+  }
+}
+
+class ThemeModel extends ChangeNotifier {
+  final ThemeData darkTheme = ThemeData.dark().copyWith(
+    primaryColor: CommonColors.accentColor,
+    floatingActionButtonTheme: FloatingActionButtonThemeData(
+      backgroundColor: CommonColors.accentColor,
+    ),
+  );
+  final ThemeData lightTheme = ThemeData.light().copyWith(
+    primaryColor: CommonColors.accentColor,
+    floatingActionButtonTheme: FloatingActionButtonThemeData(
+      backgroundColor: CommonColors.accentColor,
+    ),
+  );
+
+  ThemeData appTheme;
+
+  ThemeModel() {
+    appTheme = darkTheme;
+  }
+
+  void toggleTheme() {
+    if (appTheme == lightTheme) {
+      appTheme = darkTheme;
+    } else {
+      appTheme = lightTheme;
+    }
     notifyListeners();
   }
 }

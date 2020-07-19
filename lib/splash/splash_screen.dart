@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:lottie/lottie.dart';
-import 'package:petsupplies/common_colors.dart';
-import 'package:petsupplies/common_dimens.dart';
+import 'package:petsupplies/core/common_colors.dart';
+import 'package:petsupplies/core/common_dimens.dart';
 import 'package:petsupplies/main.dart';
 import 'package:provider/provider.dart';
 
-import 'core/constants.dart';
+import '../core/constants.dart';
 
 class SplashScreenRoute extends StatefulWidget {
   static const String routeName = "${appName}_${versionName}_${splash}_splash";
@@ -78,31 +78,38 @@ class _SplashScreenRouteState extends State<SplashScreenRoute> {
           ),
         ),
         Positioned(
-          bottom: -50,
-          left: 0,
-          right: 0,
+          bottom: -90,
+          left: -100,
           child: CircleAvatar(
             radius: Provider.of<SplashProgressNotifier>(context, listen: true)
                     .progress
                     .toDouble() *
-                2,
-            child: SizedBox(
-              height: 50,
-              width: 150,
-              child: FlatButton(
-                onPressed: () {
-                  Navigator.pushNamed(context, MyHomePage.routeName);
-                },
-                child: Text(
-                  "Join",
-                  style: Theme.of(context)
-                      .textTheme
-                      .headline5
-                      .copyWith(color: CommonColors.iconColor),
+                3,
+            child: Column(
+              children: [
+                Lottie.network(
+                    "https://assets4.lottiefiles.com/packages/lf20_PXcBlV.json",
+                    height: 300),
+                SizedBox(
+                  height: 50,
+                  width: 150,
+                  child: OutlineButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, MyHomePage.routeName);
+                    },
+                    child: Text(
+                      "Join Now",
+                      style: Theme.of(context)
+                          .textTheme
+                          .headline5
+                          .copyWith(color: CommonColors.iconColor),
+                    ),
+                    color: CommonColors.accentColor,
+                  ),
                 ),
-                color: CommonColors.accentColor,
-              ),
+              ],
             ),
+            backgroundColor: Colors.orange,
           ),
         ),
       ],

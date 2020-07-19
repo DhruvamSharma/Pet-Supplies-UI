@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:petsupplies/cart_icon.dart';
-import 'package:petsupplies/common_colors.dart';
-import 'package:petsupplies/common_dimens.dart';
-import 'package:petsupplies/favourite_listing.dart';
-import 'package:petsupplies/supply_list.dart';
+import 'package:petsupplies/home/cart_icon.dart';
+import 'package:petsupplies/core/common_colors.dart';
+import 'package:petsupplies/core/common_dimens.dart';
+import 'package:petsupplies/home/favourite_listing.dart';
+import 'package:petsupplies/home/supply_list.dart';
 import 'package:provider/provider.dart';
 
 class HomePage extends StatelessWidget {

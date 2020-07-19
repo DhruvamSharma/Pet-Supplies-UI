@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
-import 'package:petsupplies/common_colors.dart';
+import 'package:petsupplies/core/common_colors.dart';
 import 'package:petsupplies/main.dart';
-import 'package:petsupplies/supply_item_detail.dart';
+import 'package:petsupplies/view_detail/supply_item_detail.dart';
 import 'package:provider/provider.dart';
 
-import 'common_dimens.dart';
+import '../core/common_dimens.dart';
 
 class FavouriteListWidget extends StatelessWidget {
   @override

@@ -2,10 +2,11 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
-import 'package:petsupplies/common_colors.dart';
+import 'package:petsupplies/core/common_colors.dart';
 import 'package:petsupplies/core/constants.dart';
-import 'package:petsupplies/favourite_list.dart';
-import 'common_dimens.dart';
+import 'package:petsupplies/home/favourite_list.dart';
+import 'package:petsupplies/payment/payment.dart';
+import '../core/common_dimens.dart';
 
 class SupplyItemDetailRoute extends StatelessWidget {
   static const String routeName =
@@ -29,6 +30,17 @@ class SupplyItemDetailRoute extends StatelessWidget {
               )),
         ),
         Scaffold(
+          floatingActionButton: FloatingActionButton.extended(
+            onPressed: () {
+              Navigator.pushNamed(context, PaymentRoute.routeName);
+            },
+            label: Text(
+              "Buy Now",
+              style: Theme.of(context).textTheme.subtitle2.copyWith(
+                    color: CommonColors.iconColor,
+                  ),
+            ),
+          ),
           body: ListView(
             children: [
               SizedBox(
