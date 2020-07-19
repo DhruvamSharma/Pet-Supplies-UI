@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_icons/flutter_icons.dart';
-import 'package:petsupplies/cart_icon.dart';
-import 'package:petsupplies/common_colors.dart';
-import 'package:petsupplies/common_dimens.dart';
-import 'package:petsupplies/favourite_listing.dart';
-import 'package:petsupplies/supply_list.dart';
+import 'package:petsupplies/home/cart_icon.dart';
+import 'package:petsupplies/core/common_colors.dart';
+import 'package:petsupplies/core/common_dimens.dart';
+import 'package:petsupplies/home/favourite_listing.dart';
+import 'package:petsupplies/home/supply_list.dart';
 import 'package:provider/provider.dart';
 
 class HomePage extends StatelessWidget {
@@ -35,23 +34,17 @@ class HomePage extends StatelessWidget {
           return Scaffold(
             body: Stack(
               children: [
-                Positioned(
-                  bottom: -80,
-                  right: -50,
-                  child: Image.network(
-                    "https://storage.needpix.com/rsynced_images/silhouette-3263081_1280.png",
-                    height: 300,
-                    width: 300,
-                    color: CommonColors.accentColor.withOpacity(0.2),
-                    fit: BoxFit.fill,
-                  ),
-                ),
                 Container(
                   height: MediaQuery.of(context).padding.top,
                   width: MediaQuery.of(context).size.width,
-                  color: CommonColors.primaryColorDark,
+                  decoration: BoxDecoration(
+                      color: Colors.black,
+                      borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(5),
+                          topRight: Radius.circular(5))),
                 ),
                 ListView(
+                  physics: BouncingScrollPhysics(),
                   children: [
                     Padding(
                       padding: const EdgeInsets.only(
@@ -80,7 +73,12 @@ class HomePage extends StatelessWidget {
                       ),
                     ),
                     SupplyList(),
-                    FavouriteProductListing(),
+                    if (Provider.of<SupplyProviderModel>(providerContext)
+                            .selectedIndex ==
+                        0)
+                      FavouriteProductListing(key: ObjectKey("abdullah"))
+                    else
+                      FavouriteProductListing(key: ObjectKey("abdullahaa")),
                   ],
                 ),
               ],
