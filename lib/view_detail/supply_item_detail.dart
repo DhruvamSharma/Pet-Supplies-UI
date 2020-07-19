@@ -62,7 +62,6 @@ class SupplyItemDetailRoute extends StatelessWidget {
                     ),
                     child: ClipRRect(
                       child: Container(
-                        color: favouriteItemList[index].color,
                         margin: const EdgeInsets.all(0),
                         child: Image.network(
                           favouriteItemList[index].itemImage,
@@ -249,7 +248,7 @@ class SupplyItemDetailRoute extends StatelessWidget {
           ),
         ),
         SizedBox(
-          height: 64,
+          height: 80,
           child: AppBar(
             backgroundColor: Colors.transparent,
             elevation: 0,
