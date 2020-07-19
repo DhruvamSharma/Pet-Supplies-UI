@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
+import 'package:lottie/lottie.dart';
+import 'package:petsupplies/core/common_dimens.dart';
 import 'package:petsupplies/main.dart';
 import 'package:provider/provider.dart';
 
-import 'common_colors.dart';
+import '../core/common_colors.dart';
 
 class CartIcon extends StatelessWidget {
   @override
@@ -18,16 +20,25 @@ class CartIcon extends StatelessWidget {
           ),
           onPressed: () {
             showModalBottomSheet(
-                backgroundColor: Colors.transparent,
                 context: context,
+                isScrollControlled: true,
                 builder: (_) {
                   return Container(
+                    height: 500,
                     decoration: BoxDecoration(
-                      color: CommonColors.accentColor,
+                      color: Provider.of<ThemeModel>(context).appTheme ==
+                              ThemeData.light()
+                          ? CommonColors.bottomSheetColor
+                          : null,
                       borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(20),
                         topRight: Radius.circular(20),
                       ),
+                    ),
+                    child: Column(
+                      children: [
+                        if (cartState.cart.isEmpty) buildEmptyCart(context),
+                      ],
                     ),
                   );
                 });
@@ -49,6 +60,33 @@ class CartIcon extends StatelessWidget {
               ),
             ),
           ),
+      ],
+    );
+  }
+
+  Widget buildEmptyCart(BuildContext context) {
+    return Column(
+      children: [
+        Padding(
+          padding: const EdgeInsets.only(top: CommonDimens.leftRightPadding),
+          child: Text(
+            "Uh oh!",
+            style: Theme.of(context).textTheme.headline6.copyWith(
+                  color: CommonColors.headlineTextColor,
+                ),
+          ),
+        ),
+        Text(
+          "Uh oh! Your cart seems empty",
+          style: Theme.of(context).textTheme.headline6.copyWith(
+                color: CommonColors.headlineTextColor,
+              ),
+        ),
+        Lottie.network(
+          "https://assets8.lottiefiles.com/packages/lf20_C31OHO.json",
+          height: 400,
+          width: 300,
+        ),
       ],
     );
   }

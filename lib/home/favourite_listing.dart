@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:petsupplies/common_dimens.dart';
-import 'package:petsupplies/favourite_list.dart';
+import 'package:petsupplies/core/common_colors.dart';
+import 'package:petsupplies/core/common_dimens.dart';
+import 'package:petsupplies/home/favourite_list.dart';
 
 class FavouriteProductListing extends StatelessWidget {
+  final key;
+  FavouriteProductListing({this.key});
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -17,18 +21,24 @@ class FavouriteProductListing extends StatelessWidget {
             children: [
               Text(
                 "Favourites - ",
-                style: Theme.of(context).textTheme.headline6,
+                style: Theme.of(context)
+                    .textTheme
+                    .headline6
+                    .copyWith(color: CommonColors.headlineTextColor),
               ),
               Text(
                 "Pet Items",
                 style: Theme.of(context).textTheme.headline6.copyWith(
-                      fontWeight: FontWeight.w300,
-                    ),
+                    fontWeight: FontWeight.w300,
+                    color: CommonColors.headlineTextColor),
               ),
               Spacer(),
               Text(
                 "See all",
-                style: Theme.of(context).textTheme.bodyText1,
+                style: Theme.of(context)
+                    .textTheme
+                    .bodyText1
+                    .copyWith(color: CommonColors.headlineTextColor),
               ),
               IconButton(
                 icon: Icon(
